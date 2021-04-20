@@ -35,4 +35,16 @@ while true do
         puts "[info] About wpscanner".green
         puts
     end
+
+    if $option == "anon" then
+        puts
+        puts "*** ANONSURF STARTING ***".green.on_blue
+        system("service tor start")
+        system("anonsurf start")
+        puts "Press 99 to stop anonsurf"
+    end
+    if $option == "99" then
+        system("anonsurf stop service")
+        puts "anon surf stoped!"
+    end
     
