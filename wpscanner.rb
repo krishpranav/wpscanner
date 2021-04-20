@@ -48,12 +48,12 @@ while true do
         puts "anon surf stoped!"
     end
     
-    if $options == "targ" then
+    if $option == "targ" then
         puts "[1] Search target shodan".blue
         puts "[2] Shodan Port Scanner".blue 
     end 
     
-    if $options == "2" then 
+    if $option == "2" then 
         print "IP: ".green
         targetportscan = gets.chomp
         $sourceshoadan = open("https://www.shodan.io/host/#{targetportscan}").read
@@ -63,4 +63,32 @@ while true do
         print "[+}".green
         system("grep -a 'Ports open:'  #{targetportscan}.htm | cut -d '=' -f 3 | cut -d '/' -f 1")
     end 
-    
+  
+    if $option == "1" then
+      def ban()
+        puts "TARGET"
+      end
+      ban()
+      puts "TARGET"
+      puts "Before you can running make sure you have putted your shodan api key on api.txt"
+      apii = open("api.txt")
+      my_shodan_api = apii.read 
+      print "Search : "
+      target = gets.chomp
+      api = Shodan::Shodan.new("#{my_shodan_api}")
+      result = api.search("#{target}")
+      file = File.open("result.txt", "w") do |f2|
+        system("clear")
+        bann()
+        puts "--------"
+        puts host['ip_str']
+        f2.puts host['ip_str']
+        puts "--------"
+      }
+      system("clear")
+      bann()
+      puts "[+] SUCCESS!! Target saved in result.txt".green
+      system("pause>nul")
+    end
+end
+
