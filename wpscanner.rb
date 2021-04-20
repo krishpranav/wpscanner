@@ -48,3 +48,19 @@ while true do
         puts "anon surf stoped!"
     end
     
+    if $options == "targ" then
+        puts "[1] Search target shodan".blue
+        puts "[2] Shodan Port Scanner".blue 
+    end 
+    
+    if $options == "2" then 
+        print "IP: ".green
+        targetportscan = gets.chomp
+        $sourceshoadan = open("https://www.shodan.io/host/#{targetportscan}").read
+        f = File.open("#{targetportscan}.htm", "W")
+        f.puts $sourceshoadan
+        f.close
+        print "[+}".green
+        system("grep -a 'Ports open:'  #{targetportscan}.htm | cut -d '=' -f 3 | cut -d '/' -f 1")
+    end 
+    
